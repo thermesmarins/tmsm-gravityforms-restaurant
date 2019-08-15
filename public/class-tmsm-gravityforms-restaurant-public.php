@@ -61,18 +61,6 @@ class Tmsm_Gravityforms_Restaurant_Public {
 	 */
 	public function enqueue_styles() {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Tmsm_Gravityforms_Restaurant_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Tmsm_Gravityforms_Restaurant_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/tmsm-gravityforms-restaurant-public.css', array(), $this->version, 'all' );
 
 	}
@@ -84,20 +72,178 @@ class Tmsm_Gravityforms_Restaurant_Public {
 	 */
 	public function enqueue_scripts() {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Tmsm_Gravityforms_Restaurant_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Tmsm_Gravityforms_Restaurant_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/tmsm-gravityforms-restaurant-public.js', array( 'jquery' ), $this->version, false );
 
+	}
+
+
+	/**
+	 * Populate Hour Slots in tmsm-gravityforms-restaurant-hourslots field
+	 *
+	 * @param array $form
+	 *
+	 * @return mixed
+	 */
+	function populate_hourslots( $form ) {
+
+		if(!is_admin()){
+
+			$hourslots_field_id = null;
+			$date_field_id = null;
+			$date_format = null;
+
+			if ( strpos( 'tmsm-gravityforms-restaurant-form', $form['cssClass'] ) !== false ) {
+				foreach ( $form['fields'] as &$field ) {
+
+					if ( strpos( $field->cssClass, 'tmsm-gravityforms-restaurant-date' ) !== false ) {
+
+						$date_field_id = $field->id;
+						$date_format = $field->dateFormat;
+					}
+
+					if ( strpos( $field->cssClass, 'tmsm-gravityforms-restaurant-hourslots' ) !== false ) {
+
+						$hourslots_field_id = $field->id;
+
+						$options = get_option( 'tmsm_gravityforms_restaurant_settings' );
+
+						$hour_slots = esc_html( $options['hour_slots'] );
+						$hour_slots_array = explode( PHP_EOL, $hour_slots );
+
+						$choices = array();
+
+						foreach ( $hour_slots_array as $hour_slot ) {
+							$hour_slot = trim($hour_slot);
+							if(strlen($hour_slot) === 4){
+								$hour = substr($hour_slot, 0, 2);
+								$time = substr($hour_slot, 2, 2);
+								$date = date('Y-m-d') . ' '.$hour.':'.$time.':00';
+								$choices[] = array( 'text' => mysql2date( __('g:i A', 'tmsm-gravityforms-restaurant'), $date ), 'value' => $hour_slot );
+							}
+
+						}
+
+						$field->placeholder     = __('Pick an Hour Slot', 'tmsm-gravityforms-restaurant');
+						$field->choices     = $choices;
+					}
+
+					if ( strpos( $field->cssClass, 'tmsm-gravityforms-restaurant-result' ) !== false ) {
+						$field->label = 'aaa';
+						$field->description = 'ccc';
+						$field->content = self::is_restaurant_available($date_field_id, $hourslots_field_id, $date_format);
+
+					}
+
+				}
+
+			}
+			//print_r($form);
+		}
+
+		return $form;
+	}
+
+
+	/**
+	 * Is restaurant available
+	 *
+	 * @param $date_field_id string
+	 * @param $hourslots_field_id string
+	 * @param $date_format string
+	 *
+	 * @return string
+	 */
+	function is_restaurant_available($date_field_id, $hourslots_field_id, $date_format){
+		print_r('$date_field_id:'.$date_field_id);
+		print_r('$hourslots_field_id:'.$hourslots_field_id);
+		print_r('$date_format:'.$date_format);
+
+		if(!empty($date_field_id)){
+			$date_picked = rgpost('input_'.$date_field_id);
+		}
+		if(!empty($hourslots_field_id)){
+			$hourslot_picked = rgpost('input_'.$hourslots_field_id);
+		}
+
+		$available = true;
+
+		$day = null;
+		$month = null;
+		$year = null;
+		if(!empty($date_format) && !empty($date_picked)){
+			$map_pos = [
+				0 => 0,
+				1 => 3,
+				2 => 6,
+			];
+			$day_pos = strpos($date_format, 'd');
+			$day = substr($date_picked, $map_pos[$day_pos], 2);
+			$month_pos = strpos($date_format, 'm');
+			$month = substr($date_picked, $map_pos[$month_pos], 2);
+			$year_pos = strpos($date_format, 'y');
+			$year = substr($date_picked, $map_pos[$year_pos], 4);
+
+			print_r('$day:'.$day);
+			print_r('$month:'.$month);
+			print_r('$year:'.$year);
+
+		}
+
+		if(!empty($day) && !empty($month) && !empty($year) && !empty($hourslot_picked)){
+			$restaurantclosed_posts = get_posts( [
+				'posts_per_page' => - 1,
+				'post_type'      => 'restaurant-closed',
+				'post_status'    => [ 'publish', 'future' ],
+				'day'    => $day,
+				'monthnum'    => $month,
+				'year'    => $year,
+			] );
+
+			foreach ($restaurantclosed_posts as $restaurantclosed_post){
+				if(strpos($restaurantclosed_post->post_content, $hourslot_picked) !== false){
+					$available = false;
+
+					$hour_slots_array = explode( ', ', $restaurantclosed_post->post_content );
+					//print_r($hour_slots_array );
+					$choices = array();
+					foreach ( $hour_slots_array as $hour_slot ) {
+						$hour_slot = trim($hour_slot);
+						if(strlen($hour_slot) === 4 && $hour_slot !== $hourslot_picked){
+							$hour = substr($hour_slot, 0, 2);
+							$time = substr($hour_slot, 2, 2);
+							$date = date('Y-m-d') . ' '.$hour.':'.$time.':00';
+							$choices[] = mysql2date( __('g:i A', 'tmsm-gravityforms-restaurant'), $date );
+						}
+					}
+
+					$output = '<h3>'.__('Restaurant is full', 'tmsm-gravityforms-restaurant').'</h3>';
+					$output .= '<p>';
+					$output .= __('Unfortunately, the hour slot you requested is not available.', 'tmsm-gravityforms-restaurant');
+					$output .= '<br>';
+
+					if(count($choices) > 0){
+						$output .= sprintf(__('Otherwise, there are other slots available: %s', 'tmsm-gravityforms-restaurant'), join(', ', $choices));
+					}
+					else{
+						$output .= __('No other slots are available this day, please pick another day.', 'tmsm-gravityforms-restaurant');
+					}
+					$output .= '</p>';
+				}
+			}
+			//print_r($restaurantclosed_posts);
+		}
+
+		//print_r('$hourslot:'.$hourslot);
+		//print_r('$date:'.$date);
+
+		if($available === true){
+			$output = '<h3>'.__('Available', 'tmsm-gravityforms-restaurant').'</h3>';
+			$output .= '<p>';
+			$output .= __('The hour slot you requested is available! Please fill your details below.', 'tmsm-gravityforms-restaurant');
+			$output .= '</p>';
+		}
+
+		return $output;
 	}
 
 }

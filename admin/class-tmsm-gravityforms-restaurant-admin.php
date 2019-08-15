@@ -61,18 +61,6 @@ class Tmsm_Gravityforms_Restaurant_Admin {
 	 */
 	public function enqueue_styles() {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Tmsm_Gravityforms_Restaurant_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Tmsm_Gravityforms_Restaurant_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/tmsm-gravityforms-restaurant-admin.css', array(), $this->version, 'all' );
 
 	}
@@ -84,20 +72,86 @@ class Tmsm_Gravityforms_Restaurant_Admin {
 	 */
 	public function enqueue_scripts() {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Tmsm_Gravityforms_Restaurant_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Tmsm_Gravityforms_Restaurant_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/tmsm-gravityforms-restaurant-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
 
+	/**
+	 *
+	 * @since    1.0.0
+	 */
+	public function the_form_response() {
+		if( isset( $_POST['restaurant-closed-submit'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'tmsm_gravityforms_restaurant_form_nonce') ) {
+			/*$nds_user_meta_key = sanitize_key( $_POST['nds']['user_meta_key'] );
+			$nds_user_meta_value = sanitize_text_field( $_POST['nds']['user_meta_value'] );
+			$nds_user =  get_user_by( 'login',  $_POST['nds']['user_select'] );
+			$nds_user_id = absint( $nds_user->ID ) ;*/
+
+			$date = isset($_POST['date']) ? sanitize_text_field( wp_unslash( $_POST['date'] ) ) : null;
+			$hour_slots_posted = isset($_POST['hour_slots']) ? $_POST['hour_slots'] : array();
+			$hour_slots_array = array();
+			if ( is_array( $hour_slots_posted ) ) {
+				foreach ( $hour_slots_posted as $hour_slot_key => $hour_slot_value ) {
+					$hour_slots_array[$hour_slot_key] = sanitize_text_field( wp_unslash( $hour_slot_value ) );
+				}
+			}
+			$hour_slots = join(', ', $hour_slots_array);
+
+			if(!empty($date) && !empty($hour_slots)){
+				$insert_post = wp_insert_post([
+					'post_title' => $date,
+					'post_name' => 'restaurant-closed-'.$date,
+					'post_date' => $date,
+					'post_content' => $hour_slots,
+					'post_status' => 'publish',
+					'post_type' => 'restaurant-closed',
+				]);
+
+			}
+			//add_user_meta( $nds_user_id, $nds_user_meta_key, $nds_user_meta_value );
+
+			$admin_notice = "success";
+			$this->custom_redirect( $admin_notice, $_POST );
+			exit;
+		}
+		else {
+			wp_die( __( 'Invalid nonce specified', $this->plugin_name ), __( 'Error', $this->plugin_name ), array(
+				'response' 	=> 403,
+				'back_link' => 'admin.php?page=' . $this->plugin_name,
+			) );
+		}
+	}
+	/**
+	 * Redirect
+	 *
+	 * @since    1.0.0
+	 */
+	public function custom_redirect( $admin_notice, $response ) {
+		wp_redirect( esc_url_raw( add_query_arg( array(
+			'tmsm_gravityforms_restaurant_form_notice' => $admin_notice,
+			//'tmsm_gravityforms_restaurant_form_response' => $response,
+		),
+			admin_url('admin.php?page='. $this->plugin_name )
+		) ) );
+	}
+	/**
+	 * Print Admin Notices
+	 *
+	 * @since    1.0.0
+	 */
+	public function print_plugin_admin_notices() {
+		if ( isset( $_REQUEST['tmsm_gravityforms_restaurant_form_notice'] ) ) {
+			if( $_REQUEST['tmsm_gravityforms_restaurant_form_notice'] === "success") {
+				$html =	'<div class="notice notice-success is-dismissible"> 
+							<p><strong>'.__('Item was added', 'tmsm-gravityforms-restaurant').'</strong></p>';
+				//$html .= '<pre>' . htmlspecialchars( print_r( $_REQUEST['tmsm_gravityforms_restaurant_form_response'], true) ) . '</pre>';
+				$html .= '</div>';
+				echo $html;
+			}
+
+		}
+		else {
+			return;
+		}
+	}
 }

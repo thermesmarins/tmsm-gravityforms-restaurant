@@ -27,7 +27,7 @@
 			</fieldset>
 		</div>
 
-		<?php submit_button( __( 'Close restaurant for this date and times', 'restaurant-closed' ), 'primary', 'restaurant-closed-submit' ); ?>
+		<?php submit_button( __( 'Close restaurant for this date and times', 'tmsm-gravityforms-restaurant' ), 'primary', 'restaurant-closed-submit' ); ?>
 	</form>
 	<div id="nds_form_feedback"></div>
 

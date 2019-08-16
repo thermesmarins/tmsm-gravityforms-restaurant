@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TMSM Gravity Forms Restaurant\n"
-"POT-Creation-Date: 2019-08-14 16:45+0200\n"
+"POT-Creation-Date: 2019-08-16 11:47+0200\n"
 "PO-Revision-Date: 2014-10-24 21:08+0100\n"
 "Last-Translator: Nicolas Mollet <nico.mollet@gmail.com>\n"
 "Language-Team: Nicolas Mollet <nico.mollet@gmail.com>\n"
@@ -35,24 +35,24 @@ msgstr ""
 msgid "Restaurant"
 msgstr ""
 
-#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:120
+#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:116
 msgid "Close the restaurant"
 msgstr ""
 
-#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:131
+#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:127
 msgid "Add Dates"
 msgstr ""
 
-#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:132
-#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:193
+#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:128
+#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:189
 msgid "Settings"
 msgstr ""
 
-#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:174
+#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:170
 msgid "Customize your settings"
 msgstr ""
 
-#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:200
+#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:196
 msgid "Hour Slots"
 msgstr ""
 
@@ -85,26 +85,26 @@ msgid "Add new %s"
 msgstr ""
 
 #: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:29
-#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:142
+#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:143
 #, php-format
 msgid "Edit %s"
 msgstr ""
 
 #: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:30
 #: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:31
-#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:143
+#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:144
 #, php-format
 msgid "View %s"
 msgstr ""
 
 #: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:32
-#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:149
+#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:150
 #, php-format
 msgid "Search %s"
 msgstr ""
 
 #: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:33
-#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:154
+#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:155
 #, php-format
 msgid "No %s found"
 msgstr ""
@@ -115,7 +115,7 @@ msgid "No %s found in trash"
 msgstr ""
 
 #: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:35
-#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:141
+#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:142
 #, php-format
 msgid "All %s"
 msgstr ""
@@ -141,56 +141,56 @@ msgid "Uploaded to this %s"
 msgstr ""
 
 #: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:41
-#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:147
+#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:148
 #, php-format
 msgid "Parent %s"
 msgstr ""
 
 #: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:42
-#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:148
+#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:149
 #, php-format
 msgid "Parent %s:"
 msgstr ""
 
-#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:144
+#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:145
 #, php-format
 msgid "Update %s"
 msgstr ""
 
-#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:145
+#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:146
 #, php-format
 msgid "Add New %s"
 msgstr ""
 
-#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:146
+#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:147
 #, php-format
 msgid "New %s Name"
 msgstr ""
 
-#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:150
+#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:151
 #, php-format
 msgid "Popular %s"
 msgstr ""
 
-#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:151
+#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:152
 #, php-format
 msgid "Separate %s with commas"
 msgstr ""
 
-#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:152
+#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:153
 #, php-format
 msgid "Add or remove %s"
 msgstr ""
 
-#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:153
+#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:154
 #, php-format
 msgid "Choose from the most used %s"
 msgstr ""
 
-#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:210
 #: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:211
 #: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:212
 #: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:213
+#: ../includes/class-tmsm-gravityforms-restaurant-posttypes.php:214
 msgid "Restaurant Closed"
 msgstr ""
 
@@ -202,18 +202,53 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: ../includes/class-tmsm-gravityforms-restaurant-tablelist.php:258
+#: ../includes/class-tmsm-gravityforms-restaurant-tablelist.php:257
 msgid "Items were deleted successfully"
 msgstr ""
 
-#: ../includes/class-tmsm-gravityforms-restaurant-tablelist.php:406
+#: ../includes/class-tmsm-gravityforms-restaurant-tablelist.php:405
 msgid "Dates where restaurant is closed"
 msgstr ""
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:109
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:121
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:214
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:238
 msgid "g:i A"
 msgstr ""
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:114
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:126
 msgid "Pick an Hour Slot"
+msgstr ""
+
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:159
+msgid "The form has not been correctly filled."
+msgstr ""
+
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:218
+msgid "Restaurant is full"
+msgstr ""
+
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:220
+msgid "Unfortunately, the hour slot you requested is not available."
+msgstr ""
+
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:224
+#, php-format
+msgid "Otherwise, there are other slots available: %s"
+msgstr ""
+
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:227
+msgid ""
+"No other slots are available this day, please pick another day."
+msgstr ""
+
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:235
+msgid "Available"
+msgstr ""
+
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:238
+#, php-format
+msgid ""
+"The hour slot (%s at %s) you requested is available! Please fill "
+"your details below."
 msgstr ""

@@ -1,3 +1,4 @@
+### 1.0.1: August 16th, 2019
 * Fix roles
 
 ### 1.0.0: August 16th, 2019

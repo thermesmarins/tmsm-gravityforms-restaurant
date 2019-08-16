@@ -1,4 +1,5 @@
 * Fix localization
+* Destroy default Datepickr
 
 ### 1.0.1: August 16th, 2019
 * Fix roles

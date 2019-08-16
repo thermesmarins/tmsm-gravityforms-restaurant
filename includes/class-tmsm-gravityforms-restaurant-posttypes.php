@@ -93,6 +93,7 @@ class Tmsm_Gravityforms_Restaurant_Posttypes {
 			 * @link http://justintadlock.com/archives/2010/07/10/meta-capabilities-for-custom-post-types
 			 */
 			$args['capabilities'] = array(
+				'manage_restaurant'         => 'manage_restaurant',
 				// Meta capabilities
 				'edit_post'                 => 'edit_' . strtolower( $fields['singular'] ),
 				'read_post'                 => 'read_' . strtolower( $fields['singular'] ),

@@ -55,19 +55,15 @@ class Tmsm_Gravityforms_Restaurant_Settings {
 
 		// Create a special menu item
 		add_menu_page(
-			__( 'Restaurant', 'tmsm-gravityforms-restaurant' ), 					// The title to be displayed in the browser window for this page.
-			__( 'Restaurant', 'tmsm-gravityforms-restaurant' ),					// The text to be displayed for this menu item
-			'manage_options',					// Which type of users can see this menu item
-			'tmsm-gravityforms-restaurant',			// The unique ID - that is, the slug - for this menu item
-			array( $this, 'render_settings_page_content'),				// The name of the function to call when rendering this menu's page
+			__( 'Restaurant', 'tmsm-gravityforms-restaurant' ),  // The title to be displayed in the browser window for this page.
+			__( 'Restaurant', 'tmsm-gravityforms-restaurant' ),  // The text to be displayed for this menu item
+			'manage_restaurant',                           // Which type of users can see this menu item
+			'tmsm-gravityforms-restaurant',            // The unique ID - that is, the slug - for this menu item
+			array( $this, 'render_settings_page_content' ),     // The name of the function to call when rendering this menu's page
 			'dashicons-calendar-alt'
 		);
 
 	}
-
-
-
-
 
 	/**
 	 * Provides default values for the Input Options.

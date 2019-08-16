@@ -239,8 +239,7 @@ class Tmsm_Gravityforms_Restaurant_List_Table extends WP_List_Table {
 	function process_bulk_action() {
 
 		if ( isset($_GET['_wpnonce']) && wp_verify_nonce( $_GET['_wpnonce'], 'bulk-' . $this->_args['plural'] ) && 'delete' === $this->current_action() ) {
-			//print_r($this);
-			//print_r($_GET);
+
 			$restaurant_closed_ids = $_GET['restaurant-closed'];
 			if ( is_array( $restaurant_closed_ids ) ) {
 				foreach ( $restaurant_closed_ids as $restaurant_closed_id ) {

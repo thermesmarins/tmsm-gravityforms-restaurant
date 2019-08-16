@@ -19,10 +19,13 @@
  * Version:           1.0.0
  * Author:            Nico Mollet
  * Author URI:        https://www.github.com/nicomollet/
- * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * License:           GNU General Public License v3.0
+ * License URI:       http://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:       tmsm-gravityforms-restaurant
  * Domain Path:       /languages
+ * Github Plugin URI: https://github.com/thermesmarins/tmsm-gravityforms-restaurant/
+ * Github Branch:     master
+ * Requires PHP:      5.6
  */
 
 // If this file is called directly, abort.

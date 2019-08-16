@@ -72,7 +72,7 @@ class Tmsm_Gravityforms_Restaurant_Public {
 	 */
 	public function enqueue_scripts() {
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/tmsm-gravityforms-restaurant-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/tmsm-gravityforms-restaurant-public.js', array( 'jquery' ), $this->version, true );
 
 	}
 
@@ -128,16 +128,13 @@ class Tmsm_Gravityforms_Restaurant_Public {
 					}
 
 					if ( strpos( $field->cssClass, 'tmsm-gravityforms-restaurant-result' ) !== false ) {
-						$field->label = 'aaa';
-						$field->description = 'ccc';
 						$field->content = self::is_restaurant_available($date_field_id, $hourslots_field_id, $date_format);
-
+						$field->defaultValue = self::is_restaurant_available($date_field_id, $hourslots_field_id, $date_format);
 					}
 
 				}
 
 			}
-			//print_r($form);
 		}
 
 		return $form;
@@ -154,15 +151,20 @@ class Tmsm_Gravityforms_Restaurant_Public {
 	 * @return string
 	 */
 	function is_restaurant_available($date_field_id, $hourslots_field_id, $date_format){
-		print_r('$date_field_id:'.$date_field_id);
-		print_r('$hourslots_field_id:'.$hourslots_field_id);
-		print_r('$date_format:'.$date_format);
+
+		$date_picked = null;
+		$hourslot_picked = null;
+		$hour_picked = null;
+		$time_picked = null;
+		$output = __('The form has not been correctly filled.', 'tmsm-gravityforms-restaurant');
 
 		if(!empty($date_field_id)){
 			$date_picked = rgpost('input_'.$date_field_id);
 		}
 		if(!empty($hourslots_field_id)){
 			$hourslot_picked = rgpost('input_'.$hourslots_field_id);
+			$hour_picked = substr($hourslot_picked, 0, 2);
+			$time_picked = substr($hourslot_picked, 2, 2);
 		}
 
 		$available = true;
@@ -183,10 +185,6 @@ class Tmsm_Gravityforms_Restaurant_Public {
 			$year_pos = strpos($date_format, 'y');
 			$year = substr($date_picked, $map_pos[$year_pos], 4);
 
-			print_r('$day:'.$day);
-			print_r('$month:'.$month);
-			print_r('$year:'.$year);
-
 		}
 
 		if(!empty($day) && !empty($month) && !empty($year) && !empty($hourslot_picked)){
@@ -204,8 +202,9 @@ class Tmsm_Gravityforms_Restaurant_Public {
 					$available = false;
 
 					$hour_slots_array = explode( ', ', $restaurantclosed_post->post_content );
-					//print_r($hour_slots_array );
 					$choices = array();
+
+					// Other Hour Slots of the same day
 					foreach ( $hour_slots_array as $hour_slot ) {
 						$hour_slot = trim($hour_slot);
 						if(strlen($hour_slot) === 4 && $hour_slot !== $hourslot_picked){
@@ -216,7 +215,7 @@ class Tmsm_Gravityforms_Restaurant_Public {
 						}
 					}
 
-					$output = '<h3>'.__('Restaurant is full', 'tmsm-gravityforms-restaurant').'</h3>';
+					$output = '<div class="tmsm-gravityforms-restaurant-full"><h3>'.__('Restaurant is full', 'tmsm-gravityforms-restaurant').'</h3>';
 					$output .= '<p>';
 					$output .= __('Unfortunately, the hour slot you requested is not available.', 'tmsm-gravityforms-restaurant');
 					$output .= '<br>';
@@ -227,20 +226,17 @@ class Tmsm_Gravityforms_Restaurant_Public {
 					else{
 						$output .= __('No other slots are available this day, please pick another day.', 'tmsm-gravityforms-restaurant');
 					}
-					$output .= '</p>';
+					$output .= '</p></div>';
 				}
 			}
-			//print_r($restaurantclosed_posts);
 		}
 
-		//print_r('$hourslot:'.$hourslot);
-		//print_r('$date:'.$date);
-
-		if($available === true){
-			$output = '<h3>'.__('Available', 'tmsm-gravityforms-restaurant').'</h3>';
+		if($available === true && $hour_picked && $time_picked){
+			$output = '<div class="tmsm-gravityforms-restaurant-available"><h3>'.__('Available', 'tmsm-gravityforms-restaurant').'</h3>';
 			$output .= '<p>';
-			$output .= __('The hour slot you requested is available! Please fill your details below.', 'tmsm-gravityforms-restaurant');
-			$output .= '</p>';
+			$date = date('Y-m-d') . ' '.$hour_picked.':'.$time_picked.':00';
+			$output .= sprintf( __('The hour slot (%s at %s) you requested is available! Please fill your details below.', 'tmsm-gravityforms-restaurant'), esc_html($date_picked), mysql2date( __('g:i A', 'tmsm-gravityforms-restaurant'), $date ));
+			$output .= '</p></div>';
 		}
 
 		return $output;

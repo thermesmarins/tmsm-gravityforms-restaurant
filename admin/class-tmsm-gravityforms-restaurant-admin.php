@@ -72,7 +72,7 @@ class Tmsm_Gravityforms_Restaurant_Admin {
 	 */
 	public function enqueue_scripts() {
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/tmsm-gravityforms-restaurant-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/tmsm-gravityforms-restaurant-admin.js', array( 'jquery' ), $this->version, true );
 
 	}
 
@@ -144,7 +144,6 @@ class Tmsm_Gravityforms_Restaurant_Admin {
 			if( $_REQUEST['tmsm_gravityforms_restaurant_form_notice'] === "success") {
 				$html =	'<div class="notice notice-success is-dismissible"> 
 							<p><strong>'.__('Item was added', 'tmsm-gravityforms-restaurant').'</strong></p>';
-				//$html .= '<pre>' . htmlspecialchars( print_r( $_REQUEST['tmsm_gravityforms_restaurant_form_response'], true) ) . '</pre>';
 				$html .= '</div>';
 				echo $html;
 			}

@@ -1,11 +1,15 @@
 (function( $ ) {
 	'use strict';
 
-  console.log('load 02');
+  $(document).on('gform_post_render', function(event, form_id, current_page){
 
-  $('form.tmsm-gravityforms-restaurant-form .gform_next_button').on('click', function(e){
-    console.log('submit 02');
+    if(($('.tmsm-gravityforms-restaurant-result').html().indexOf('tmsm-gravityforms-restaurant-full') > -1)){
+      $('.tmsm-gravityforms-restaurant-availability .ginput_container *').val(0);
+    }
+    else{
+      $('.tmsm-gravityforms-restaurant-availability .ginput_container *').val(1);
+    }
+
   });
-
 
 })( jQuery );

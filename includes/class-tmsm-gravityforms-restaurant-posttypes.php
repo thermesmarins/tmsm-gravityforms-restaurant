@@ -232,7 +232,7 @@ class Tmsm_Gravityforms_Restaurant_Posttypes {
 				),
 				'custom_caps'           => true,
 				'custom_caps_users'     => array(
-					'administrator',
+					'administrator', 'editor', 'author'
 				),
 
 			),

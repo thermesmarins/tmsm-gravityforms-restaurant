@@ -1,3 +1,6 @@
+* Fix other hour slots available calculation
+* Fix success text
+
 ### 1.0.2: August 16th, 2019
 * Fix localization
 * Destroy default Datepickr

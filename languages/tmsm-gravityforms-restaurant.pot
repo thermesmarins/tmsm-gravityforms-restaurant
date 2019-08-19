@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TMSM Gravity Forms Restaurant\n"
-"POT-Creation-Date: 2019-08-16 11:47+0200\n"
+"POT-Creation-Date: 2019-08-19 11:44+0200\n"
 "PO-Revision-Date: 2014-10-24 21:08+0100\n"
 "Last-Translator: Nicolas Mollet <nico.mollet@gmail.com>\n"
 "Language-Team: Nicolas Mollet <nico.mollet@gmail.com>\n"
@@ -211,8 +211,8 @@ msgid "Dates where restaurant is closed"
 msgstr ""
 
 #: ../public/class-tmsm-gravityforms-restaurant-public.php:121
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:214
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:238
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:221
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:245
 msgid "g:i A"
 msgstr ""
 
@@ -224,31 +224,29 @@ msgstr ""
 msgid "The form has not been correctly filled."
 msgstr ""
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:218
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:225
 msgid "Restaurant is full"
 msgstr ""
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:220
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:227
 msgid "Unfortunately, the hour slot you requested is not available."
 msgstr ""
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:224
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:231
 #, php-format
 msgid "Otherwise, there are other slots available: %s"
 msgstr ""
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:227
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:234
 msgid ""
 "No other slots are available this day, please pick another day."
 msgstr ""
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:235
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:242
 msgid "Available"
 msgstr ""
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:238
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:245
 #, php-format
-msgid ""
-"The hour slot (%s at %s) you requested is available! Please fill "
-"your details below."
+msgid "The hour slot %s at %s is available."
 msgstr ""

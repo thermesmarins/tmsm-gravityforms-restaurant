@@ -187,6 +187,11 @@ class Tmsm_Gravityforms_Restaurant_Public {
 
 		}
 
+		$options = get_option( 'tmsm_gravityforms_restaurant_settings' );
+		$hour_slots = esc_html( $options['hour_slots'] );
+		$hour_slots_array = explode( PHP_EOL, $hour_slots );
+		$hour_slots_array = array_map('trim', $hour_slots_array);
+
 		if(!empty($day) && !empty($month) && !empty($year) && !empty($hourslot_picked)){
 			$restaurantclosed_posts = get_posts( [
 				'posts_per_page' => - 1,
@@ -201,12 +206,14 @@ class Tmsm_Gravityforms_Restaurant_Public {
 				if(strpos($restaurantclosed_post->post_content, $hourslot_picked) !== false){
 					$available = false;
 
-					$hour_slots_array = explode( ', ', $restaurantclosed_post->post_content );
+					$hour_slots_closed_array = explode( ', ', $restaurantclosed_post->post_content );
+					$hour_slots_closed_array = array_map('trim', $hour_slots_closed_array);
 					$choices = array();
 
-					// Other Hour Slots of the same day
-					foreach ( $hour_slots_array as $hour_slot ) {
-						$hour_slot = trim($hour_slot);
+					$hour_slots_diff_array = array_diff($hour_slots_array, $hour_slots_closed_array );
+
+					// Other Hour Slots Closed of the same day
+					foreach ( $hour_slots_diff_array as $hour_slot ) {
 						if(strlen($hour_slot) === 4 && $hour_slot !== $hourslot_picked){
 							$hour = substr($hour_slot, 0, 2);
 							$time = substr($hour_slot, 2, 2);
@@ -235,7 +242,7 @@ class Tmsm_Gravityforms_Restaurant_Public {
 			$output = '<div class="tmsm-gravityforms-restaurant-available"><h3>'.__('Available', 'tmsm-gravityforms-restaurant').'</h3>';
 			$output .= '<p>';
 			$date = date('Y-m-d') . ' '.$hour_picked.':'.$time_picked.':00';
-			$output .= sprintf( __('The hour slot (%s at %s) you requested is available! Please fill your details below.', 'tmsm-gravityforms-restaurant'), esc_html($date_picked), mysql2date( __('g:i A', 'tmsm-gravityforms-restaurant'), $date ));
+			$output .= sprintf( __('The hour slot %s at %s is available.', 'tmsm-gravityforms-restaurant'), esc_html($date_picked), mysql2date( __('g:i A', 'tmsm-gravityforms-restaurant'), $date ));
 			$output .= '</p></div>';
 		}
 

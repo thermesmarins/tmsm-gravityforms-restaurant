@@ -1,3 +1,4 @@
+### 1.0.3: August 19th, 2019
 * Fix other hour slots available calculation
 * Fix success text
 

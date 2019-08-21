@@ -1,3 +1,4 @@
+### 1.0.4: August 21st, 2019
 * Fix impossible to add current day
 
 ### 1.0.3: August 19th, 2019

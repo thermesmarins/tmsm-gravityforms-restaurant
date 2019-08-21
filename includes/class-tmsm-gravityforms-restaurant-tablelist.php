@@ -100,10 +100,14 @@ class Tmsm_Gravityforms_Restaurant_List_Table extends WP_List_Table {
 	 *
 	 */
 	static function remove_old_posts() {
+		
 		$args     = array(
 			'posts_per_page' => -1,
 			'post_type'      => 'restaurant-closed',
 			'post_status'    => 'publish',
+			'date_query' => array(
+				'before' => date('Y-m-d', strtotime('-1 days'))
+			),
 		);
 		$allposts = get_posts( $args );
 		foreach ( $allposts as $post ) :
@@ -279,7 +283,7 @@ class Tmsm_Gravityforms_Restaurant_List_Table extends WP_List_Table {
 		/**
 		 * First, lets decide how many records per page to show
 		 */
-		$per_page = 20;
+		$per_page = 10;
 
 
 		/**
@@ -310,6 +314,7 @@ class Tmsm_Gravityforms_Restaurant_List_Table extends WP_List_Table {
 		$this->process_bulk_action();
 
 		$posts  = get_posts([
+			'posts_per_page' => -1,
 			'post_type' => 'restaurant-closed',
 			'post_status' => ['publish', 'future'],
 			'order' => 'DESC',
@@ -368,7 +373,6 @@ class Tmsm_Gravityforms_Restaurant_List_Table extends WP_List_Table {
 		 * it can be used by the rest of the class.
 		 */
 		$this->items = $data;
-
 
 		/**
 		 * REQUIRED. We also have to register our pagination options & calculations.

@@ -1,4 +1,3 @@
-### 1.0.5: August 5th, 2020
 * Update FR translation
 
 ### 1.0.4: August 21st, 2019

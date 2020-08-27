@@ -1,4 +1,5 @@
 * Update FR translation
+* Changed date format including day name
 
 ### 1.0.4: August 21st, 2019
 * Fix impossible to add current day

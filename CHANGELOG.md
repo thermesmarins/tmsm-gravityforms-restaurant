@@ -1,3 +1,4 @@
+### 1.0.5: August 27th, 2020
 * Update FR translation
 * Changed date format including day name
 

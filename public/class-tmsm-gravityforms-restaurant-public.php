@@ -90,7 +90,7 @@ class Tmsm_Gravityforms_Restaurant_Public {
 
 			$hourslots_field_id = null;
 			$date_field_id = null;
-			$date_format = null;
+			$date_format = __('mm/dd/yyyy', 'tmsm-gravityforms-restaurant');
 
 			if ( strpos( 'tmsm-gravityforms-restaurant-form', $form['cssClass'] ) !== false ) {
 				foreach ( $form['fields'] as &$field ) {
@@ -98,7 +98,7 @@ class Tmsm_Gravityforms_Restaurant_Public {
 					if ( strpos( $field->cssClass, 'tmsm-gravityforms-restaurant-date' ) !== false ) {
 
 						$date_field_id = $field->id;
-						$date_format = $field->dateFormat;
+
 					}
 
 					if ( strpos( $field->cssClass, 'tmsm-gravityforms-restaurant-hourslots' ) !== false ) {
@@ -160,6 +160,10 @@ class Tmsm_Gravityforms_Restaurant_Public {
 
 		if(!empty($date_field_id)){
 			$date_picked = rgpost('input_'.$date_field_id);
+
+			$date_picked = preg_replace('/[a-z]/i', '', $date_picked);
+			$date_picked = str_replace(' ', '', $date_picked);
+
 		}
 		if(!empty($hourslots_field_id)){
 			$hourslot_picked = rgpost('input_'.$hourslots_field_id);
@@ -173,17 +177,14 @@ class Tmsm_Gravityforms_Restaurant_Public {
 		$month = null;
 		$year = null;
 		if(!empty($date_format) && !empty($date_picked)){
-			$map_pos = [
-				0 => 0,
-				1 => 3,
-				2 => 6,
-			];
 			$day_pos = strpos($date_format, 'd');
-			$day = substr($date_picked, $map_pos[$day_pos], 2);
+			$day = substr($date_picked, $day_pos, 2);
+
 			$month_pos = strpos($date_format, 'm');
-			$month = substr($date_picked, $map_pos[$month_pos], 2);
+			$month = substr($date_picked, $month_pos, 2);
+
 			$year_pos = strpos($date_format, 'y');
-			$year = substr($date_picked, $map_pos[$year_pos], 4);
+			$year = substr($date_picked, $year_pos, 4);
 
 		}
 
@@ -203,7 +204,9 @@ class Tmsm_Gravityforms_Restaurant_Public {
 			] );
 
 			foreach ($restaurantclosed_posts as $restaurantclosed_post){
+
 				if(strpos($restaurantclosed_post->post_content, $hourslot_picked) !== false){
+
 					$available = false;
 
 					$hour_slots_closed_array = explode( ', ', $restaurantclosed_post->post_content );

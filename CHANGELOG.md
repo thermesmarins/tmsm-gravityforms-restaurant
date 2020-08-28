@@ -1,3 +1,5 @@
+* Fix parsing date format after changes on date field
+
 ### 1.0.6: August 27th, 2020
 * Fix version number
 

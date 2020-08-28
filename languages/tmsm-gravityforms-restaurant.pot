@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TMSM Gravity Forms Restaurant\n"
-"POT-Creation-Date: 2020-08-05 16:41+0200\n"
+"POT-Creation-Date: 2020-08-28 09:20+0200\n"
 "PO-Revision-Date: 2014-10-24 21:08+0100\n"
 "Last-Translator: Nicolas Mollet <nico.mollet@gmail.com>\n"
 "Language-Team: Nicolas Mollet <nico.mollet@gmail.com>\n"
@@ -210,43 +210,47 @@ msgstr ""
 msgid "Dates where restaurant is closed"
 msgstr ""
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:121
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:221
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:245
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:102
+msgid "m/d/y"
+msgstr ""
+
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:122
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:229
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:253
 msgid "g:i A"
 msgstr ""
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:126
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:127
 msgid "Pick an Hour Slot"
 msgstr ""
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:159
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:163
 msgid "The form has not been correctly filled."
 msgstr ""
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:225
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:233
 msgid "Restaurant is full"
 msgstr ""
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:227
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:235
 msgid "Unfortunately, the hour slot you requested is not available."
 msgstr ""
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:231
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:239
 #, php-format
 msgid "Otherwise, there are other slots available: %s"
 msgstr ""
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:234
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:242
 msgid ""
 "No other slots are available this day, please pick another day."
 msgstr ""
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:242
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:250
 msgid "Available"
 msgstr ""
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:245
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:253
 #, php-format
 msgid "The hour slot %s at %s is available."
 msgstr ""

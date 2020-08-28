@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TMSM Gravity Forms Restaurant\n"
-"POT-Creation-Date: 2020-08-05 16:41+0200\n"
-"PO-Revision-Date: 2020-08-05 16:42+0200\n"
+"POT-Creation-Date: 2020-08-28 09:37+0200\n"
+"PO-Revision-Date: 2020-08-28 09:38+0200\n"
 "Last-Translator: Nicolas Mollet <nico.mollet@gmail.com>\n"
 "Language-Team: Nicolas Mollet <nico.mollet@gmail.com>\n"
 "Language: fr\n"
@@ -209,9 +209,13 @@ msgstr "Les items ont bien été supprimés"
 msgid "Dates where restaurant is closed"
 msgstr "Dates pour lesquelles le restaurant est fermé"
 
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:93
+msgid "mm/dd/yyyy"
+msgstr "dd/mm/yyyy"
+
 #: ../public/class-tmsm-gravityforms-restaurant-public.php:121
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:221
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:245
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:242
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:266
 msgid "g:i A"
 msgstr "G\\hi"
 
@@ -219,37 +223,40 @@ msgstr "G\\hi"
 msgid "Pick an Hour Slot"
 msgstr "Choisir un créneau horaire"
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:159
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:162
 msgid "The form has not been correctly filled."
 msgstr "Le formulaire n’a pas été correctement rempli."
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:225
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:246
 msgid "Restaurant is full"
 msgstr "Le restaurant est complet"
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:227
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:248
 msgid "Unfortunately, the hour slot you requested is not available."
 msgstr "Malheureusement, le créneau horaire demandé n’est pas disponible."
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:231
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:252
 #, php-format
 msgid "Otherwise, there are other slots available: %s"
 msgstr "Par contre, il y a d’autres créneaux disponibles : %s"
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:234
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:255
 msgid "No other slots are available this day, please pick another day."
 msgstr ""
 "Aucun autre créneau horaire disponible ce jour, veuillez choisir un autre "
 "jour."
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:242
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:263
 msgid "Available"
 msgstr "Disponible"
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:245
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:266
 #, php-format
 msgid "The hour slot %s at %s is available."
 msgstr "Le créneau horaire demandé %s à %s est disponible."
+
+#~ msgid "m/d/y"
+#~ msgstr "d/m/y"
 
 #~ msgid ""
 #~ "The hour slot (%s at %s) you requested is available! Please fill your "

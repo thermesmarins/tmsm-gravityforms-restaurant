@@ -1,4 +1,14 @@
-/**
- * All of the CSS for your public-facing functionality should be
- * included in this file.
- */
+#tmsm-gravityforms-restaurant-roomservice p:first-child {
+  font-weight: bold;
+}
+#tmsm-gravityforms-restaurant-roomservice p:first-child:after {
+  content: "";
+}
+#tmsm-gravityforms-restaurant-roomservice p:after {
+  content: "___";
+  display: block;
+}
+#tmsm-gravityforms-restaurant-roomservice p:last-child:after {
+  content: "";
+}
+/*# sourceMappingURL=tmsm-gravityforms-restaurant-public.css.map */

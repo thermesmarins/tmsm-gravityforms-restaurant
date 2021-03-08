@@ -16,7 +16,7 @@
  * Plugin Name:       TMSM Gravity Forms Restaurant
  * Plugin URI:        https://www.github.com/thermesmarins/tmsm-gravityforms-restaurant/
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.0.7
+ * Version:           1.1.0
  * Author:            Nico Mollet
  * Author URI:        https://www.github.com/nicomollet/
  * License:           GNU General Public License v3.0
@@ -25,7 +25,7 @@
  * Domain Path:       /languages
  * Github Plugin URI: https://github.com/thermesmarins/tmsm-gravityforms-restaurant/
  * Github Branch:     master
- * Requires PHP:      5.6
+ * Requires PHP:      7.0
  */
 
 // If this file is called directly, abort.
@@ -38,7 +38,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'TMSM_GRAVITYFORMS_RESTAURANT_VERSION', '1.0.7' );
+define( 'TMSM_GRAVITYFORMS_RESTAURANT_VERSION', '1.1.0' );
 
 /**
  * The code that runs during plugin activation.

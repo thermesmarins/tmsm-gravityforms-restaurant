@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TMSM Gravity Forms Restaurant\n"
-"POT-Creation-Date: 2020-08-28 09:37+0200\n"
-"PO-Revision-Date: 2020-08-28 09:38+0200\n"
+"POT-Creation-Date: 2021-03-08 14:09+0100\n"
+"PO-Revision-Date: 2021-03-08 14:10+0100\n"
 "Last-Translator: Nicolas Mollet <nico.mollet@gmail.com>\n"
 "Language-Team: Nicolas Mollet <nico.mollet@gmail.com>\n"
 "Language: fr\n"
@@ -42,18 +42,30 @@ msgstr "Fermer le restaurant"
 msgid "Add Dates"
 msgstr "Ajouter des dates"
 
-#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:128
-#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:189
+#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:129
+msgid "Room Service"
+msgstr "Room Service"
+
+#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:131
+#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:201
 msgid "Settings"
 msgstr "Réglages"
 
-#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:170
+#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:182
 msgid "Customize your settings"
 msgstr "Personnaliser les réglages"
 
-#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:196
+#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:208
 msgid "Hour Slots"
 msgstr "Créneaux horaires"
+
+#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:222
+msgid "RoomService"
+msgstr "Room Service"
+
+#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:229
+msgid "Menu"
+msgstr "Menu"
 
 #: ../admin/partials/tmsm-gravityforms-restaurant-admin-form.php:2
 msgid "Close the restaurant on specific date and time"
@@ -205,7 +217,7 @@ msgstr "Supprimer"
 msgid "Items were deleted successfully"
 msgstr "Les items ont bien été supprimés"
 
-#: ../includes/class-tmsm-gravityforms-restaurant-tablelist.php:409
+#: ../includes/class-tmsm-gravityforms-restaurant-tablelist.php:410
 msgid "Dates where restaurant is closed"
 msgstr "Dates pour lesquelles le restaurant est fermé"
 
@@ -214,8 +226,8 @@ msgid "mm/dd/yyyy"
 msgstr "dd/mm/yyyy"
 
 #: ../public/class-tmsm-gravityforms-restaurant-public.php:121
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:242
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:266
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:224
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:248
 msgid "g:i A"
 msgstr "G\\hi"
 
@@ -223,34 +235,34 @@ msgstr "G\\hi"
 msgid "Pick an Hour Slot"
 msgstr "Choisir un créneau horaire"
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:162
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:159
 msgid "The form has not been correctly filled."
 msgstr "Le formulaire n’a pas été correctement rempli."
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:246
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:228
 msgid "Restaurant is full"
 msgstr "Le restaurant est complet"
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:248
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:230
 msgid "Unfortunately, the hour slot you requested is not available."
 msgstr "Malheureusement, le créneau horaire demandé n’est pas disponible."
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:252
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:234
 #, php-format
 msgid "Otherwise, there are other slots available: %s"
 msgstr "Par contre, il y a d’autres créneaux disponibles : %s"
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:255
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:237
 msgid "No other slots are available this day, please pick another day."
 msgstr ""
 "Aucun autre créneau horaire disponible ce jour, veuillez choisir un autre "
 "jour."
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:263
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:245
 msgid "Available"
 msgstr "Disponible"
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:266
+#: ../public/class-tmsm-gravityforms-restaurant-public.php:248
 #, php-format
 msgid "The hour slot %s at %s is available."
 msgstr "Le créneau horaire demandé %s à %s est disponible."

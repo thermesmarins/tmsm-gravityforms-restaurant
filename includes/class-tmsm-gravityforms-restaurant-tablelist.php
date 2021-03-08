@@ -133,7 +133,7 @@ class Tmsm_Gravityforms_Restaurant_List_Table extends WP_List_Table {
 	 * WP_List_Table::single_row_columns()
 	 *
 	 * @param array $item A singular item (one full row's worth of data)
-	 * @param array $column_name The name/slug of the column to be processed
+	 * @param string $column_name The name/slug of the column to be processed
 	 * @return string Text or HTML to be placed inside the column <td>
 	 **************************************************************************/
 	function column_default($item, $column_name){
@@ -295,6 +295,7 @@ class Tmsm_Gravityforms_Restaurant_List_Table extends WP_List_Table {
 		 */
 		$columns = $this->get_columns();
 		$hidden = array();
+		$data = array();
 		$sortable = $this->get_sortable_columns();
 
 

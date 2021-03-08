@@ -252,4 +252,36 @@ class Tmsm_Gravityforms_Restaurant_Public {
 		return $output;
 	}
 
+	/**
+	 * Register the shortcodes
+	 *
+	 * @since    1.0.8
+	 */
+	public function register_shortcodes() {
+		add_shortcode( 'roomservice-menu', array( $this, 'roomservicemenu_shortcode') );
+	}
+
+	/**
+	 * Room Service Menu shortcode
+	 *
+	 * @since    1.0.8
+	 */
+	public function roomservicemenu_shortcode( $atts ) {
+
+		$atts = shortcode_atts( array(), $atts, 'customeralliance-badge' );
+
+		$output = null;
+
+		$options         = get_option( 'tmsm_gravityforms_restaurant_roomservice' );
+
+		$roomservicemenu = $options['menu'] ?? null;
+		if ( ! empty( $roomservicemenu ) ) {
+			//$roomservicemenu = str_replace("\r\n\r\n", "<br>___<br><br>", $roomservicemenu);
+			$output = '<div id="tmsm-gravityforms-restaurant-roomservice">'.wpautop( $roomservicemenu ).'</div>';
+			
+		}
+
+		return $output;
+	}
+
 }

@@ -125,7 +125,11 @@ class Tmsm_Gravityforms_Restaurant_Settings {
 
 			<h2 class="nav-tab-wrapper">
 				<a href="?page=tmsm-gravityforms-restaurant&tab=form" class="nav-tab <?php echo $active_tab === 'form' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Add Dates', 'tmsm-gravityforms-restaurant' ); ?></a>
+
+				<a href="?page=tmsm-gravityforms-restaurant&tab=roomservice" class="nav-tab <?php echo $active_tab === 'roomservice' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Room Service', 'tmsm-gravityforms-restaurant' ); ?></a>
+
 				<a href="?page=tmsm-gravityforms-restaurant&tab=settings" class="nav-tab <?php echo $active_tab === 'settings' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Settings', 'tmsm-gravityforms-restaurant' ); ?></a>
+
 			</h2>
 
 
@@ -134,6 +138,14 @@ class Tmsm_Gravityforms_Restaurant_Settings {
 				<?php
 				settings_fields( 'tmsm_gravityforms_restaurant_settings' );
 				do_settings_sections( 'tmsm_gravityforms_restaurant_settings' );
+				submit_button();
+				?>
+			</form>
+			<?php } elseif( $active_tab == 'roomservice' ) { ?>
+			<form method="post" action="options.php">
+				<?php
+				settings_fields( 'tmsm_gravityforms_restaurant_roomservice' );
+				do_settings_sections( 'tmsm_gravityforms_restaurant_roomservice' );
 				submit_button();
 				?>
 			</form>
@@ -205,6 +217,27 @@ class Tmsm_Gravityforms_Restaurant_Settings {
 			array( $this, 'validate_settings')
 		);
 
+		add_settings_section(
+			'roomservice',
+			__( 'RoomService', 'tmsm-gravityforms-restaurant' ),
+			null,
+			'tmsm_gravityforms_restaurant_roomservice'
+		);
+
+		add_settings_field(
+			'menu',
+			__( 'Menu', 'tmsm-gravityforms-restaurant' ),
+			array( $this, 'menu_callback'),
+			'tmsm_gravityforms_restaurant_roomservice',
+			'roomservice'
+		);
+
+		register_setting(
+			'tmsm_gravityforms_restaurant_roomservice',
+			'tmsm_gravityforms_restaurant_roomservice',
+			array( $this, 'validate_settings')
+		);
+
 	}
 
 	public function hourslots_callback() {
@@ -212,9 +245,19 @@ class Tmsm_Gravityforms_Restaurant_Settings {
 		$options = get_option( 'tmsm_gravityforms_restaurant_settings' );
 
 		// Render the output
-		echo '<textarea id="textarea_example" name="tmsm_gravityforms_restaurant_settings[hour_slots]" rows="15" cols="50">' . esc_html($options['hour_slots'] ) . '</textarea>';
+		echo '<textarea name="tmsm_gravityforms_restaurant_settings[hour_slots]" rows="15" cols="50">' . esc_html($options['hour_slots'] ) . '</textarea>';
 
 	} // end hourslots_callback
+
+
+	public function menu_callback() {
+
+		$options = get_option( 'tmsm_gravityforms_restaurant_roomservice' );
+
+		// Render the output
+		echo '<textarea name="tmsm_gravityforms_restaurant_roomservice[menu]" rows="15" cols="50">' . esc_html($options['menu'] ) . '</textarea>';
+
+	} // end menu_callback
 
 
 

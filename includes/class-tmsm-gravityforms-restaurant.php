@@ -199,6 +199,8 @@ class Tmsm_Gravityforms_Restaurant {
 		$this->loader->add_filter( 'gform_pre_submission_filter', $plugin_public, 'populate_hourslots' );
 		$this->loader->add_filter( 'gform_admin_pre_render', $plugin_public, 'populate_hourslots' );
 
+		$this->loader->add_action( 'init', $plugin_public, 'register_shortcodes' );
+
 	}
 
 	/**

@@ -1,3 +1,7 @@
+### 1.1.0: March 8th, 2021
+* Room Service Menu textarea field in backend
+* Room Service Menu shortcode in public
+
 ### 1.0.7: August 28th, 2020
 * Fix parsing date format after changes on date field
 

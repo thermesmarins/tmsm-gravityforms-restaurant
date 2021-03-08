@@ -8,3 +8,6 @@
 * "Result" field needs to have css class: tmsm-gravityforms-restaurant-result
 * "Availability" field needs to have css class: tmsm-gravityforms-restaurant-availability
 
+* Room Service Menu" shortcode [roomservice-menu]
+* First paragraph is bold
+* All other paragraphs are separated by ___

@@ -1,3 +1,5 @@
+* Update readme for shortcode
+
 ### 1.1.0: March 8th, 2021
 * Room Service Menu textarea field in backend
 * Room Service Menu shortcode in public

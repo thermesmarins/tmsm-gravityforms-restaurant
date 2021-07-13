@@ -8,7 +8,7 @@
     } else {
     }
 
-    if(($('.tmsm-gravityforms-restaurant-result').html().indexOf('tmsm-gravityforms-restaurant-full') > -1)){
+    if( $('.tmsm-gravityforms-restaurant-result').length > 0 && ($('.tmsm-gravityforms-restaurant-result').html().indexOf('tmsm-gravityforms-restaurant-full') > -1)){
       $('.tmsm-gravityforms-restaurant-availability .ginput_container *').val(0);
     }
     else{

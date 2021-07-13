@@ -92,7 +92,7 @@ class Tmsm_Gravityforms_Restaurant_Public {
 			$date_field_id = null;
 			$date_format = __('mm/dd/yyyy', 'tmsm-gravityforms-restaurant');
 
-			if ( strpos( 'tmsm-gravityforms-restaurant-form', $form['cssClass'] ) !== false ) {
+			if ( ! empty ( $form['cssClass'] ) && strpos( 'tmsm-gravityforms-restaurant-form', $form['cssClass'] ) !== false ) {
 				foreach ( $form['fields'] as &$field ) {
 
 					if ( strpos( $field->cssClass, 'tmsm-gravityforms-restaurant-date' ) !== false ) {

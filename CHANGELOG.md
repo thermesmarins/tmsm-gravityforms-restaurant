@@ -1,3 +1,4 @@
+### 1.1.1: July 13th, 2021
 * Update readme for shortcode
 * Fix syntax
 

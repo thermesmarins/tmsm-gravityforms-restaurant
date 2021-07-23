@@ -171,6 +171,8 @@ class Tmsm_Gravityforms_Restaurant {
 
 		$this->loader->add_action( 'admin_menu', $plugin_settings, 'setup_plugin_options_menu' );
 		$this->loader->add_action( 'admin_init', $plugin_settings, 'initialize_settings' );
+		$plugin_basename = plugin_basename( plugin_dir_path( __DIR__ ) . $this->plugin_name . '.php' );
+		$this->loader->add_filter( 'plugin_action_links_'.$plugin_basename, $plugin_admin, 'settings_link' );
 
 		$this->loader->add_action( 'init', $plugin_posttypes, 'create_custom_post_type', 999 );
 

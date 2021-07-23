@@ -77,6 +77,19 @@ class Tmsm_Gravityforms_Restaurant_Admin {
 	}
 
 	/**
+	 * Plugin Settings Link on plugin page
+	 *
+	 * @since 		1.0.0
+	 * @return 		mixed 			The settings field
+	 */
+	function settings_link( $links ) {
+		$setting_link = array(
+			'<a href="' . admin_url( 'options-general.php?page='.$this->plugin_name ) . '">'.__('Settings', 'tmsm-gravityforms-restaurant').'</a>',
+		);
+		return array_merge( $setting_link, $links );
+	}
+
+	/**
 	 *
 	 * @since    1.0.0
 	 */

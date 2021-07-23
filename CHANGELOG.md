@@ -1,3 +1,4 @@
+### 1.1.2: July 23rd, 2021
 * Add a setting field "restaurant name"
 * Write the name of the restaurant to avoid confusion
 

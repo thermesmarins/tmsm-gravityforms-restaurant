@@ -1,5 +1,8 @@
 <div class="form-wrap">
-	<h3><?php _e( 'Close the restaurant on specific date and time', 'tmsm-gravityforms-restaurant' ); ?></h3>
+	<h3><?php
+		$options = get_option( 'tmsm_gravityforms_restaurant_settings' );
+		echo sprintf(__( 'Close the restaurant %s on specific date and time', 'tmsm-gravityforms-restaurant' ), esc_html($options['restaurant_name']) ?? '');
+		?></h3>
 
 	<form action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post" id="tmsm_gravityforms_restaurant_form">
 

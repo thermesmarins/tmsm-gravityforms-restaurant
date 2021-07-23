@@ -34,6 +34,15 @@ class Tmsm_Gravityforms_Restaurant_Settings {
 	private $version;
 
 	/**
+	 * The plugin options.
+	 *
+	 * @since 		1.0.0
+	 * @access 		private
+	 * @var 		string 			$options    The plugin options.
+	 */
+	private $options;
+
+	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
@@ -113,7 +122,9 @@ class Tmsm_Gravityforms_Restaurant_Settings {
 		?>
 		<div class="wrap">
 
-			<h2><?php _e( 'Close the restaurant', 'tmsm-gravityforms-restaurant' ); ?></h2>
+			<h2><?php
+				$options = get_option( 'tmsm_gravityforms_restaurant_settings' );
+				echo sprintf(__( 'Close the restaurant %s', 'tmsm-gravityforms-restaurant' ), esc_html($options['restaurant_name']) ?? ''); ?></h2>
 			<?php settings_errors(); ?>
 
 			<?php
@@ -204,6 +215,14 @@ class Tmsm_Gravityforms_Restaurant_Settings {
 		);
 
 		add_settings_field(
+			'restaurant_name',
+			__( 'Restaurant Name', 'tmsm-gravityforms-restaurant' ),
+			array( $this, 'restaurantname_callback'),
+			'tmsm_gravityforms_restaurant_settings',
+			'settings',
+		);
+
+		add_settings_field(
 			'hour_slots',
 			__( 'Hour Slots', 'tmsm-gravityforms-restaurant' ),
 			array( $this, 'hourslots_callback'),
@@ -249,6 +268,14 @@ class Tmsm_Gravityforms_Restaurant_Settings {
 
 	} // end hourslots_callback
 
+	public function restaurantname_callback() {
+
+		$options = get_option( 'tmsm_gravityforms_restaurant_settings' );
+
+		// Render the output
+		echo '<input type="text" name="tmsm_gravityforms_restaurant_settings[restaurant_name]" class="regular-text" value="'.esc_attr(sanitize_text_field($options['restaurant_name'])).'"/>';
+
+	} // end restaurantname_callback
 
 	public function menu_callback() {
 

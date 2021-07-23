@@ -72,7 +72,6 @@ if(!class_exists('WP_List_Table')){
  * then call $yourInstance->prepare_items() to handle any data manipulation, then
  * finally call $yourInstance->display() to render the table to the page.
  *
- * Our theme for this list table is going to be movies.
  */
 class Tmsm_Gravityforms_Restaurant_List_Table extends WP_List_Table {
 
@@ -399,21 +398,21 @@ class Tmsm_Gravityforms_Restaurant_List_Table extends WP_List_Table {
 function tmsm_gravityforms_restaurant_list_table_render(){
 
 	//Create an instance of our package class...
-	$testListTable = new Tmsm_Gravityforms_Restaurant_List_Table();
+	$restaurantclosedListTable = new Tmsm_Gravityforms_Restaurant_List_Table();
 	//Fetch, prepare, sort, and filter our data...
-	$testListTable->prepare_items();
+	$restaurantclosedListTable->prepare_items();
 
 	?>
 	<div class="wrap">
 
 		<div id="icon-users" class="icon32"><br/></div>
-		<h3><?php _e('Dates where restaurant is closed','tmsm-gravityforms-restaurant'); ?></h3>
-		<!-- Forms are NOT created automatically, so you need to wrap the table in one to use features like bulk actions -->
-		<form id="movies-filter" method="get">
-			<!-- For plugins, we also need to ensure that the form posts back to our current page -->
+		<h3><?php
+			$options = get_option( 'tmsm_gravityforms_restaurant_settings' );
+			echo sprintf(__( 'Dates where restaurant %s is closed', 'tmsm-gravityforms-restaurant' ), esc_html($options['restaurant_name']) ?? '');
+			?></h3>
+		<form id="restaurantclosed-filter" method="get">
 			<input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
-			<!-- Now we can render the completed list table -->
-			<?php $testListTable->display() ?>
+			<?php $restaurantclosedListTable->display() ?>
 		</form>
 
 	</div>

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TMSM Gravity Forms Restaurant\n"
-"POT-Creation-Date: 2021-03-08 14:09+0100\n"
-"PO-Revision-Date: 2021-03-08 14:10+0100\n"
+"POT-Creation-Date: 2021-07-23 13:56+0200\n"
+"PO-Revision-Date: 2021-07-23 13:56+0200\n"
 "Last-Translator: Nicolas Mollet <nico.mollet@gmail.com>\n"
 "Language-Team: Nicolas Mollet <nico.mollet@gmail.com>\n"
 "Language: fr\n"
@@ -29,59 +29,65 @@ msgstr "Erreur"
 msgid "Item was added"
 msgstr "Item ajouté"
 
-#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:58
-#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:59
+#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:67
+#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:68
 msgid "Restaurant"
 msgstr "Restaurant"
 
-#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:116
-msgid "Close the restaurant"
-msgstr "Fermer le restaurant"
-
 #: ../admin/class-tmsm-gravityforms-restaurant-settings.php:127
+#, php-format
+msgid "Close the restaurant %s"
+msgstr "Fermer le restaurant %s"
+
+#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:138
 msgid "Add Dates"
 msgstr "Ajouter des dates"
 
-#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:129
+#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:140
 msgid "Room Service"
 msgstr "Room Service"
 
-#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:131
-#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:201
+#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:142
+#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:212
 msgid "Settings"
 msgstr "Réglages"
 
-#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:182
+#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:193
 msgid "Customize your settings"
 msgstr "Personnaliser les réglages"
 
-#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:208
+#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:219
+msgid "Restaurant Name"
+msgstr "Nom du restaurant"
+
+#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:227
 msgid "Hour Slots"
 msgstr "Créneaux horaires"
 
-#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:222
+#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:241
 msgid "RoomService"
 msgstr "Room Service"
 
-#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:229
+#: ../admin/class-tmsm-gravityforms-restaurant-settings.php:248
 msgid "Menu"
 msgstr "Menu"
 
-#: ../admin/partials/tmsm-gravityforms-restaurant-admin-form.php:2
-msgid "Close the restaurant on specific date and time"
-msgstr "Fermer le restaurant pour des dates et heures spécifiques"
+#: ../admin/partials/tmsm-gravityforms-restaurant-admin-form.php:4
+#, php-format
+msgid "Close the restaurant %s on specific date and time"
+msgstr "Fermer le restaurant %s pour des dates et heures spécifiques"
 
-#: ../admin/partials/tmsm-gravityforms-restaurant-admin-form.php:10
-#: ../admin/partials/tmsm-gravityforms-restaurant-admin-form.php:11
-#: ../includes/class-tmsm-gravityforms-restaurant-tablelist.php:184
+#: ../admin/partials/tmsm-gravityforms-restaurant-admin-form.php:13
+#: ../admin/partials/tmsm-gravityforms-restaurant-admin-form.php:14
+#: ../includes/class-tmsm-gravityforms-restaurant-tablelist.php:183
 msgid "Date"
 msgstr "Date"
 
-#: ../admin/partials/tmsm-gravityforms-restaurant-admin-form.php:17
+#: ../admin/partials/tmsm-gravityforms-restaurant-admin-form.php:20
 msgid "Times"
 msgstr "Créneaux horaires"
 
-#: ../admin/partials/tmsm-gravityforms-restaurant-admin-form.php:30
+#: ../admin/partials/tmsm-gravityforms-restaurant-admin-form.php:33
 msgid "Close restaurant for this date and times"
 msgstr "Fermer le restaurant pour ces dates et heures spécifiques"
 
@@ -205,21 +211,22 @@ msgstr "Choisir parmi les %s plus utilisés"
 msgid "Restaurant Closed"
 msgstr "Restaurant fermé"
 
-#: ../includes/class-tmsm-gravityforms-restaurant-tablelist.php:185
+#: ../includes/class-tmsm-gravityforms-restaurant-tablelist.php:184
 msgid "Hours Slots"
 msgstr "Créneaux horaires"
 
-#: ../includes/class-tmsm-gravityforms-restaurant-tablelist.php:230
+#: ../includes/class-tmsm-gravityforms-restaurant-tablelist.php:229
 msgid "Delete"
 msgstr "Supprimer"
 
-#: ../includes/class-tmsm-gravityforms-restaurant-tablelist.php:261
+#: ../includes/class-tmsm-gravityforms-restaurant-tablelist.php:260
 msgid "Items were deleted successfully"
 msgstr "Les items ont bien été supprimés"
 
-#: ../includes/class-tmsm-gravityforms-restaurant-tablelist.php:410
-msgid "Dates where restaurant is closed"
-msgstr "Dates pour lesquelles le restaurant est fermé"
+#: ../includes/class-tmsm-gravityforms-restaurant-tablelist.php:411
+#, php-format
+msgid "Dates where restaurant %s is closed"
+msgstr "Dates pour lesquelles le restaurant %s est fermé"
 
 #: ../public/class-tmsm-gravityforms-restaurant-public.php:93
 msgid "mm/dd/yyyy"

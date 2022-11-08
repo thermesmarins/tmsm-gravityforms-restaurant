@@ -1,3 +1,4 @@
+### 1.1.3: November 8th, 2022
 * Settings link in plugins list
 * Date formatted in table list
 

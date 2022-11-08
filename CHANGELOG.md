@@ -1,4 +1,5 @@
 * Settings link in plugins list
+* Date formatted in table list
 
 ### 1.1.2: July 23rd, 2021
 * Add a setting field "restaurant name"

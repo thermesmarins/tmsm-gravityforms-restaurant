@@ -321,9 +321,11 @@ class Tmsm_Gravityforms_Restaurant_List_Table extends WP_List_Table {
 			'orderby' => 'date',
 		]);
 		foreach($posts as $post){
+			$date = date_create($post->post_title);
+
 			$data[] = [
 				'ID' => $post->ID,
-				'title' => $post->post_title,
+				'title' => $date->format('d/m/Y'),
 				'content' => $post->post_content,
 			];
 		}

@@ -70,10 +70,14 @@ class Tmsm_Gravityforms_Restaurant_Public {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_scripts() {
+	public function enqueue_scripts()
+	{
+		$time_limit_option = get_option('tmsm_gravityforms_restaurant_settings')['time_limit'] ?? '15:00';
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/tmsm-gravityforms-restaurant-public.js', array( 'jquery' ), $this->version, true );
+		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/tmsm-gravityforms-restaurant-public.js', array('jquery'), $this->version, true);
 
+		wp_localize_script( $this->plugin_name, 'time_limit', ['time_limit' => $time_limit_option] );
+		// wp_localize_script( $this->plugin_name, 'time_limit', get_option('tmsm_gravityforms_restaurant_settings')['time_limit'] ?? '15:00' );
 	}
 
 

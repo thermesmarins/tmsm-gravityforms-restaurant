@@ -13,7 +13,8 @@
  * Class WordPress_Plugin_Template_Settings
  *
  */
-class Tmsm_Gravityforms_Restaurant_Settings {
+class Tmsm_Gravityforms_Restaurant_Settings
+{
 
 	/**
 	 * The ID of this plugin.
@@ -49,29 +50,29 @@ class Tmsm_Gravityforms_Restaurant_Settings {
 	 * @param      string    $plugin_name       The name of this plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
-	public function __construct( $plugin_name, $version ) {
+	public function __construct($plugin_name, $version)
+	{
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-
 	}
 
 	/**
 	 * This function introduces the theme options into the 'Appearance' menu and into a top-level
 	 * 'WPPB Demo' menu.
 	 */
-	public function setup_plugin_options_menu() {
+	public function setup_plugin_options_menu()
+	{
 
 		// Create a special menu item
 		add_menu_page(
-			__( 'Restaurant', 'tmsm-gravityforms-restaurant' ),  // The title to be displayed in the browser window for this page.
-			__( 'Restaurant', 'tmsm-gravityforms-restaurant' ),  // The text to be displayed for this menu item
+			__('Restaurant', 'tmsm-gravityforms-restaurant'),  // The title to be displayed in the browser window for this page.
+			__('Restaurant', 'tmsm-gravityforms-restaurant'),  // The text to be displayed for this menu item
 			'manage_restaurant',                           // Which type of users can see this menu item
 			'tmsm-gravityforms-restaurant',            // The unique ID - that is, the slug - for this menu item
-			array( $this, 'render_settings_page_content' ),     // The name of the function to call when rendering this menu's page
+			array($this, 'render_settings_page_content'),     // The name of the function to call when rendering this menu's page
 			'dashicons-calendar-alt'
 		);
-
 	}
 
 	/**
@@ -79,7 +80,8 @@ class Tmsm_Gravityforms_Restaurant_Settings {
 	 *
 	 * @return array
 	 */
-	public function default_input_options() {
+	public function default_input_options()
+	{
 
 		$defaults = array(
 			'input_example'		=>	'default input example',
@@ -90,7 +92,6 @@ class Tmsm_Gravityforms_Restaurant_Settings {
 		);
 
 		return $defaults;
-
 	}
 
 	/**
@@ -98,19 +99,20 @@ class Tmsm_Gravityforms_Restaurant_Settings {
 	 *
 	 * @return array
 	 */
-	public function default_settings() {
+	public function default_settings()
+	{
 
 		$defaults = array(
 			'hour_slots'		=>	'1200
-1300
-1400
-1900
-2000
-2100',
+									1300
+									1400
+									1900
+									2000
+									2100',
+			'time_limit'		=>	'1500',
 		);
 
 		return $defaults;
-
 	}
 
 	/**
@@ -118,55 +120,59 @@ class Tmsm_Gravityforms_Restaurant_Settings {
 	 *
 	 * @param $active_tab string
 	 */
-	public function render_settings_page_content( $active_tab = '' ) {
-		?>
+	public function render_settings_page_content($active_tab = '')
+	{
+?>
 		<div class="wrap">
 
 			<h2><?php
-				$options = get_option( 'tmsm_gravityforms_restaurant_settings' );
-				echo sprintf(__( 'Close the restaurant %s', 'tmsm-gravityforms-restaurant' ), esc_html($options['restaurant_name']) ?? ''); ?></h2>
+				$options = get_option('tmsm_gravityforms_restaurant_settings');
+				if (! is_array($options)) {
+					$options = $this->default_settings();
+				}
+				echo sprintf(__('Close the restaurant %s', 'tmsm-gravityforms-restaurant'), esc_html($options['restaurant_name'] ?? '')); ?></h2>
 			<?php settings_errors(); ?>
 
 			<?php
-			if( isset( $_GET[ 'tab' ] ) ) {
-				$active_tab = sanitize_text_field( wp_unslash($_GET[ 'tab' ]) );
+			if (isset($_GET['tab'])) {
+				$active_tab = sanitize_text_field(wp_unslash($_GET['tab']));
 			} else {
 				$active_tab = 'form';
 			} ?>
 
 			<h2 class="nav-tab-wrapper">
-				<a href="?page=tmsm-gravityforms-restaurant&tab=form" class="nav-tab <?php echo $active_tab === 'form' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Add Dates', 'tmsm-gravityforms-restaurant' ); ?></a>
+				<a href="?page=tmsm-gravityforms-restaurant&tab=form" class="nav-tab <?php echo $active_tab === 'form' ? 'nav-tab-active' : ''; ?>"><?php _e('Add Dates', 'tmsm-gravityforms-restaurant'); ?></a>
 
-				<a href="?page=tmsm-gravityforms-restaurant&tab=roomservice" class="nav-tab <?php echo $active_tab === 'roomservice' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Room Service', 'tmsm-gravityforms-restaurant' ); ?></a>
+				<a href="?page=tmsm-gravityforms-restaurant&tab=roomservice" class="nav-tab <?php echo $active_tab === 'roomservice' ? 'nav-tab-active' : ''; ?>"><?php _e('Room Service', 'tmsm-gravityforms-restaurant'); ?></a>
 
-				<a href="?page=tmsm-gravityforms-restaurant&tab=settings" class="nav-tab <?php echo $active_tab === 'settings' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Settings', 'tmsm-gravityforms-restaurant' ); ?></a>
+				<a href="?page=tmsm-gravityforms-restaurant&tab=settings" class="nav-tab <?php echo $active_tab === 'settings' ? 'nav-tab-active' : ''; ?>"><?php _e('Settings', 'tmsm-gravityforms-restaurant'); ?></a>
 
 			</h2>
 
 
-			<?php if( $active_tab == 'settings' ) { ?>
-			<form method="post" action="options.php">
-				<?php
-				settings_fields( 'tmsm_gravityforms_restaurant_settings' );
-				do_settings_sections( 'tmsm_gravityforms_restaurant_settings' );
-				submit_button();
-				?>
-			</form>
-			<?php } elseif( $active_tab == 'roomservice' ) { ?>
-			<form method="post" action="options.php">
-				<?php
-				settings_fields( 'tmsm_gravityforms_restaurant_roomservice' );
-				do_settings_sections( 'tmsm_gravityforms_restaurant_roomservice' );
-				submit_button();
-				?>
-			</form>
+			<?php if ($active_tab == 'settings') { ?>
+				<form method="post" action="options.php">
+					<?php
+					settings_fields('tmsm_gravityforms_restaurant_settings');
+					do_settings_sections('tmsm_gravityforms_restaurant_settings');
+					submit_button();
+					?>
+				</form>
+			<?php } elseif ($active_tab == 'roomservice') { ?>
+				<form method="post" action="options.php">
+					<?php
+					settings_fields('tmsm_gravityforms_restaurant_roomservice');
+					do_settings_sections('tmsm_gravityforms_restaurant_roomservice');
+					submit_button();
+					?>
+				</form>
 			<?php } else { ?>
 
 				<div id="col-container">
 					<div id="col-left">
-					<div class="col-wrap">
-						<?php include_once( 'partials/tmsm-gravityforms-restaurant-admin-form.php' ); ?>
-					</div>
+						<div class="col-wrap">
+							<?php include_once('partials/tmsm-gravityforms-restaurant-admin-form.php'); ?>
+						</div>
 					</div>
 					<div id="col-right">
 						<div class="col-wrap">
@@ -181,16 +187,17 @@ class Tmsm_Gravityforms_Restaurant_Settings {
 
 
 		</div><!-- /.wrap -->
-		<?php
+<?php
 	}
 
 	/**
 	 * Settings Page callback
 	 *
 	 */
-	public function settings_callback() {
+	public function settings_callback()
+	{
 		$options = get_option('tmsm_gravityforms_restaurant_settings');
-		echo '<p>' . __( 'Customize your settings', 'tmsm-gravityforms-restaurant' ) . '</p>';
+		echo '<p>' . __('Customize your settings', 'tmsm-gravityforms-restaurant') . '</p>';
 	} // end general_options_callback
 
 
@@ -200,32 +207,40 @@ class Tmsm_Gravityforms_Restaurant_Settings {
 	 *
 	 * This function is registered with the 'admin_init' hook.
 	 */
-	public function initialize_settings() {
+	public function initialize_settings()
+	{
 		//delete_option('tmsm_gravityforms_restaurant_settings');
-		if( false == get_option( 'tmsm_gravityforms_restaurant_settings' ) ) {
+		if (false == get_option('tmsm_gravityforms_restaurant_settings')) {
 			$default_array = $this->default_settings();
-			update_option( 'tmsm_gravityforms_restaurant_settings', $default_array );
+			update_option('tmsm_gravityforms_restaurant_settings', $default_array);
 		} // end if
 
 		add_settings_section(
 			'settings',
-			__( 'Settings', 'tmsm-gravityforms-restaurant' ),
-			array( $this, 'settings_callback'),
+			__('Settings', 'tmsm-gravityforms-restaurant'),
+			array($this, 'settings_callback'),
 			'tmsm_gravityforms_restaurant_settings'
 		);
 
 		add_settings_field(
 			'restaurant_name',
-			__( 'Restaurant Name', 'tmsm-gravityforms-restaurant' ),
-			array( $this, 'restaurantname_callback'),
+			__('Restaurant Name', 'tmsm-gravityforms-restaurant'),
+			array($this, 'restaurantname_callback'),
+			'tmsm_gravityforms_restaurant_settings',
+			'settings',
+		);
+		add_settings_field(
+			'time_limit_for_reservaition',
+			__('Limit time for reservation', 'tmsm-gravityforms-restaurant'),
+			array($this, 'time_limit_for_reservation_callback'),
 			'tmsm_gravityforms_restaurant_settings',
 			'settings',
 		);
 
 		add_settings_field(
 			'hour_slots',
-			__( 'Hour Slots', 'tmsm-gravityforms-restaurant' ),
-			array( $this, 'hourslots_callback'),
+			__('Hour Slots', 'tmsm-gravityforms-restaurant'),
+			array($this, 'hourslots_callback'),
 			'tmsm_gravityforms_restaurant_settings',
 			'settings'
 		);
@@ -233,82 +248,105 @@ class Tmsm_Gravityforms_Restaurant_Settings {
 		register_setting(
 			'tmsm_gravityforms_restaurant_settings',
 			'tmsm_gravityforms_restaurant_settings',
-			array( $this, 'validate_settings')
+			array($this, 'validate_settings')
 		);
 
 		add_settings_section(
 			'roomservice',
-			__( 'RoomService', 'tmsm-gravityforms-restaurant' ),
+			__('RoomService', 'tmsm-gravityforms-restaurant'),
 			null,
 			'tmsm_gravityforms_restaurant_roomservice'
 		);
 
 		add_settings_field(
 			'menu',
-			__( 'Menu', 'tmsm-gravityforms-restaurant' ),
-			array( $this, 'menu_callback'),
+			__('Menu', 'tmsm-gravityforms-restaurant'),
+			array($this, 'menu_callback'),
 			'tmsm_gravityforms_restaurant_roomservice',
 			'roomservice'
 		);
 
+		// Ensure roomservice option has a default array structure
+		if (false == get_option('tmsm_gravityforms_restaurant_roomservice')) {
+			update_option('tmsm_gravityforms_restaurant_roomservice', array('menu' => ''));
+		}
+
 		register_setting(
 			'tmsm_gravityforms_restaurant_roomservice',
 			'tmsm_gravityforms_restaurant_roomservice',
-			array( $this, 'validate_settings')
+			array($this, 'validate_settings')
 		);
-
 	}
 
-	public function hourslots_callback() {
+	public function hourslots_callback()
+	{
 
-		$options = get_option( 'tmsm_gravityforms_restaurant_settings' );
+		$options = get_option('tmsm_gravityforms_restaurant_settings');
+		if (! is_array($options)) {
+			$options = $this->default_settings();
+		}
 
 		// Render the output
-		echo '<textarea name="tmsm_gravityforms_restaurant_settings[hour_slots]" rows="15" cols="50">' . esc_html($options['hour_slots'] ) . '</textarea>';
-
+		echo '<textarea name="tmsm_gravityforms_restaurant_settings[hour_slots]" rows="15" cols="50">' . esc_html($options['hour_slots'] ?? '') . '</textarea>';
 	} // end hourslots_callback
 
-	public function restaurantname_callback() {
+	public function restaurantname_callback()
+	{
 
-		$options = get_option( 'tmsm_gravityforms_restaurant_settings' );
+		$options = get_option('tmsm_gravityforms_restaurant_settings');
+		if (! is_array($options)) {
+			$options = $this->default_settings();
+		}
 
 		// Render the output
-		echo '<input type="text" name="tmsm_gravityforms_restaurant_settings[restaurant_name]" class="regular-text" value="'.esc_attr(sanitize_text_field($options['restaurant_name'])).'"/>';
-
+		echo '<input type="text" name="tmsm_gravityforms_restaurant_settings[restaurant_name]" class="regular-text" value="' . esc_attr(sanitize_text_field($options['restaurant_name'] ?? '')) . '"/>';
 	} // end restaurantname_callback
+	public function time_limit_for_reservation_callback()
+	{
 
-	public function menu_callback() {
-
-		$options = get_option( 'tmsm_gravityforms_restaurant_roomservice' );
+		$options = get_option('tmsm_gravityforms_restaurant_settings');
+		if (! is_array($options)) {
+			$options = $this->default_settings();
+		}
 
 		// Render the output
-		echo '<textarea name="tmsm_gravityforms_restaurant_roomservice[menu]" rows="15" cols="50">' . esc_html($options['menu'] ) . '</textarea>';
+		echo '<input type="text" name="tmsm_gravityforms_restaurant_settings[time_limit]" class="regular-text" value="' . esc_attr(sanitize_text_field($options['time_limit'] ?? '15:00')) . '"/>';
+	} // time_limit_for_reservation_callback
 
+	public function menu_callback()
+	{
+
+		$options = get_option('tmsm_gravityforms_restaurant_roomservice');
+		if (! is_array($options)) {
+			$options = array('menu' => '');
+		}
+
+		// Render the output
+		echo '<textarea name="tmsm_gravityforms_restaurant_roomservice[menu]" rows="15" cols="50">' . esc_html($options['menu'] ?? '') . '</textarea>';
 	} // end menu_callback
 
 
 
 
-	public function validate_settings( $input ) {
+	public function validate_settings($input)
+	{
 
 		// Create our array for storing the validated options
 		$output = array();
 
 		// Loop through each of the incoming options
-		foreach( $input as $key => $value ) {
+		foreach ($input as $key => $value) {
 
 			// Check to see if the current option has a value. If so, process it.
-			if( isset( $input[$key] ) ) {
+			if (isset($input[$key])) {
 
 				// Strip all HTML and PHP tags and properly handle quoted strings
-				$output[$key] = sanitize_textarea_field( $input[ $key ] );
-
+				$output[$key] = sanitize_textarea_field($input[$key]);
 			} // end if
 
 		} // end foreach
 
 		return $output;
-
 	} // end validate_settings
 
 

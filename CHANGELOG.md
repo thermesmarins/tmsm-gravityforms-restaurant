@@ -1,3 +1,6 @@
+### 1.1.4: November 3thd, 2025 
+* Add hour limit for reservations in settings tab
+
 ### 1.1.3: November 8th, 2022
 * Settings link in plugins list
 * Date formatted in table list

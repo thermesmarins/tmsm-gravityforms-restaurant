@@ -274,7 +274,7 @@ msgstr "Disponible"
 msgid "The hour slot %s at %s is available."
 msgstr "Le créneau horaire demandé %s à %s est disponible."
 
-#: ../public/class-tmsm-gravityforms-restaurant-public.php:248
+#: ../public/class-tmsm-gravityforms-restaurant-settings.php:234
 #, php-format
 msgid "Limit time for reservation in hours format(HH:MM)"
 msgstr "Limite de temps en heures format (HH:MM) pour la réservation"

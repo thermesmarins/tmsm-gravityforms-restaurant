@@ -231,7 +231,7 @@ class Tmsm_Gravityforms_Restaurant_Settings
 		);
 		add_settings_field(
 			'time_limit_for_reservaition',
-			__('Limit time for reservation', 'tmsm-gravityforms-restaurant'),
+			__('Limit time for reservation in hours format(HH:MM)', 'tmsm-gravityforms-restaurant'),
 			array($this, 'time_limit_for_reservation_callback'),
 			'tmsm_gravityforms_restaurant_settings',
 			'settings',

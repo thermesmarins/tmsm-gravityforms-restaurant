@@ -1,3 +1,6 @@
+### 1.1.5: November 4th, 2025 
+* Add translation for settings
+
 ### 1.1.4: November 3thd, 2025 
 * Add hour limit for reservations in settings tab
 
